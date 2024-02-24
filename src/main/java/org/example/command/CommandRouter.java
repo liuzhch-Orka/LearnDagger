@@ -1,15 +1,21 @@
 package org.example.command;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 import org.example.command.Command.Result;
 import org.example.command.Command.Status;
 
-import java.util.Arrays;
-import java.util.Collections;
+import javax.inject.Inject;
 import java.util.List;
 import java.util.Map;
 
 final public class CommandRouter {
     private final Map<String, Command> commands = Collections.emptyMap();
+
+    @Inject
+    CommandRouter() {
+    }
 
     public Result route(String input) {
         List<String> splitInput = split(input);
