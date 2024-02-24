@@ -1,20 +1,18 @@
 package org.example.command;
 
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.*;
 
 import org.example.command.Command.Result;
 import org.example.command.Command.Status;
 
 import javax.inject.Inject;
-import java.util.List;
-import java.util.Map;
 
 final public class CommandRouter {
-    private final Map<String, Command> commands = Collections.emptyMap();
+    private final Map<String, Command> commands = new HashMap<>();
 
     @Inject
-    CommandRouter() {
+    CommandRouter(HelloWorldCommand helloWorldCommand) {
+        commands.put(helloWorldCommand.key(), helloWorldCommand);
     }
 
     public Result route(String input) {
