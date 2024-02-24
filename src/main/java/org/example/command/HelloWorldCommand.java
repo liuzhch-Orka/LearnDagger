@@ -1,11 +1,16 @@
 package org.example.command;
 
+import org.example.outputter.Outputter;
+
 import javax.inject.Inject;
 import java.util.List;
 
 final public class HelloWorldCommand implements Command {
+    private final Outputter outputter;
+
     @Inject
-    HelloWorldCommand() {
+    HelloWorldCommand(Outputter outputter) {
+        this.outputter = outputter;
     }
 
     @Override
@@ -18,7 +23,7 @@ final public class HelloWorldCommand implements Command {
         if (!input.isEmpty()) {
             return Result.invalid();
         }
-        System.out.println("world!");
+        outputter.output("world!");
         return Result.handled();
     }
 }
