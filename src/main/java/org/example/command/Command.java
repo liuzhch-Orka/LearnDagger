@@ -3,11 +3,6 @@ package org.example.command;
 import java.util.List;
 
 public interface Command {
-    /*
-    String token that signifies this command, e.g. deposit, withdraw
-     */
-    String key();
-
     Result handleInput(List<String> input);
 
     final class Result {

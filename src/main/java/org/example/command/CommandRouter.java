@@ -8,11 +8,11 @@ import org.example.command.Command.Status;
 import javax.inject.Inject;
 
 final public class CommandRouter {
-    private final Map<String, Command> commands = new HashMap<>();
+    private final Map<String, Command> commands;
 
     @Inject
-    CommandRouter(Command command) {
-        commands.put(command.key(), command);
+    CommandRouter(Map<String, Command> commands) {
+        this.commands = commands;
     }
 
     public Result route(String input) {
