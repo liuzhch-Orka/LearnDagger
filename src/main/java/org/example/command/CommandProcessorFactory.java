@@ -11,7 +11,8 @@ import javax.inject.Singleton;
         LoginCommandModule.class,
         HelloWorldModule.class,
         SystemOutModule.class,
-        UserCommandRouter.InstallationModule.class
+        UserCommandRouter.InstallationModule.class,
+        AmountsModule.class,
 })
 public interface CommandProcessorFactory {
     CommandProcessor commandProcessor();

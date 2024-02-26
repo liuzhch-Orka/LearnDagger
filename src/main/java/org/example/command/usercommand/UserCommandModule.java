@@ -6,6 +6,7 @@ import dagger.multibindings.IntoMap;
 import dagger.multibindings.StringKey;
 import org.example.command.Command;
 import org.example.command.DepositCommand;
+import org.example.command.WithdrawCommand;
 
 @Module
 abstract public class UserCommandModule {
@@ -13,4 +14,9 @@ abstract public class UserCommandModule {
     @IntoMap
     @StringKey("deposit")
     abstract Command depositCommand(DepositCommand command);
+
+    @Binds
+    @IntoMap
+    @StringKey("withdraw")
+    abstract Command withdrawCommand(WithdrawCommand command);
 }

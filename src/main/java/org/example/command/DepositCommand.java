@@ -5,26 +5,21 @@ import org.example.outputter.Outputter;
 
 import javax.inject.Inject;
 import java.math.BigDecimal;
-import java.util.List;
 
-public final class DepositCommand implements Command {
+public final class DepositCommand extends BigDecimalCommand {
     private final Account account;
     private final Outputter outputter;
 
     @Inject
     DepositCommand(Account account, Outputter outputter) {
+        super(outputter);
         this.account = account;
         this.outputter = outputter;
     }
 
     @Override
-    public Result handleInput(List<String> input) {
-        if (input.size() != 2) {
-            return Result.invalid();
-        }
-
-        account.deposit(new BigDecimal(input.get(1)));
+    protected void handleAmount(BigDecimal amount) {
+        account.deposit(amount);
         outputter.output(account.username() + " now has: " + account.balance());
-        return Result.handled();
     }
 }
